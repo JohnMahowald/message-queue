@@ -1,0 +1,15 @@
+{
+  "name": "messaging",
+  "version": "1.0.0",
+  "description": "walking through creating a messaging app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "messaging",
+    "queue"
+  ],
+  "author": "John Mahowald",
+  "license": "ISC"
+}
