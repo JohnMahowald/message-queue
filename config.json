@@ -4,5 +4,5 @@
     "accessID": "AKIAIF5WHWGXMYMJKHPQ",
     "secretKey": "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",
     "queueURL": "https://sqs.us-west-2.amazonaws.com/638858919031/elephant-queue"
-  },
+  }
 }
