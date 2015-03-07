@@ -8,22 +8,22 @@ var sqs = new aws.SQS({
   region: config.aws.region,
     accessKeyId: config.aws.accessID,
     secretAccessKey: config.aws.secretKey,
-
     params: {
-      QueueUrl: config.aws.queueUrl
+      QueueUrl: config.aws.queueURL
     }
 });
 
 var receiveMessage = Q.nbind( sqs.receiveMessage, sqs);
 var deleteMessage = Q.nbind( sqs.deleteMessage, sqs);
 
-(function PollQueueForMessages() {
+(function pollQueueForMessages() {
   console.log( chalk.yellow( "Starting long-poll operation." ) );
 
   receiveMessage({
     WaitTimeSeconds: 3,
     VisibilityTimeout: 10
   })
+ 
   .then( function handleMessageResolve(data) {
     if (!data.Messages) {
       throw( 
@@ -33,13 +33,13 @@ var deleteMessage = Q.nbind( sqs.deleteMessage, sqs);
 
     console.log( chalk.green( "Deleting:", data.Messages[0].MessageId ) );
 
-    return ( deleteMessage({
-      ReceiptHandle: data.Messages[0].ReceiptHandle
-    })
-  )
+    return ( deleteMessage({ ReceiptHandle: data.Messages[0].ReceiptHandle }) )
+  })
+
   .then( function handleDeleteResolve( data ) {
     console.log( chalk.green("Message Deleted!"));
   })
+
   .catch( function handleError(error) {
     switch(error.type) {
       case "EmptyQueue":
@@ -50,6 +50,7 @@ var deleteMessage = Q.nbind( sqs.deleteMessage, sqs);
       break;
     }
   })
+
   .finally( pollQueueForMessages );
 })();
 

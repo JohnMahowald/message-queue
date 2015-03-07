@@ -1,0 +1,43 @@
+<html>
+  <head>
+  <style>
+    h1 {
+      color: grey;
+      text-align: center;
+      font-family: helvetica;
+    }
+
+    #click-me {
+      display: block;
+      border-radius: 3px;
+      border: 1px solid #eee;
+      background: #505050;
+      width: 300px;
+      font-family: helvetica;
+      font-size: 24px;
+      padding: 10px;
+      color: white;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    #click-me:hover {
+      background: #303030;
+    }
+  </style>
+  </head>
+  <body>
+    <h1>Messaging App</h1>
+    <button id='click-me'>Click Here!</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="></script>
+    <script>
+      var send = require("./send")
+      console.log(send);
+
+      $("#click-me").click( function() {
+      })
+    </script>
+  </body>
+</html>
